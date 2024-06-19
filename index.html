@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Teste</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1 class="logo">Cinema Maluco</h1>
+      <ul id="menu"></ul>
+      <div id="cart">
+        <i class="fa-solid fa-cart-shopping fa-xl" style="color: #ffffff;"></i>
+      </div>
+    </nav>
+  </header>
+  <main id="main">
+    <section id="shopping-cart" class="none">
+      <div class="close-cart">
+        <h2>Carrinho de Compras</h2>
+        <button id="close-cart">X</button>
+      </div>
+      <div id="filmes-cart">
+      </div>
+    </section>
+    <section id="list-movies"></section>
+    <section id="finish-purchase" class="finish-purchase">
+      <h1>Checkout</h1>
+      <div id="container-filme-escolhido">
+      </div>
+      <div id="imagem-filme-escolhido"></div>
+    </section>
+  </main>
+</body>
+<script type="module" src="./script.js"></script>
+<script src="https://kit.fontawesome.com/891b58bd95.js" crossorigin="anonymous"></script>
+</html>
