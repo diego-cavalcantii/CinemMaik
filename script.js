@@ -13,6 +13,8 @@ const finishPurchase = document.getElementById('finish-purchase');
 const containerFilmeEscolhido = document.getElementById('container-filme-escolhido');
 const containerImagemFilmeEscolhido = document.getElementById('imagem-filme-escolhido');
 const cart = document.getElementById('cart')
+const filmesCart = document.getElementById('filmes-cart')
+
 let filmeEscolhido = [];
 
 const listaMenu = [
@@ -33,7 +35,9 @@ const Movies = [
   {id: 2, title : "Bad Boys 4", price: 22, room : 2, modality:"3D",limity: 5, url:'https://br.web.img3.acsta.net/img/b0/17/b0173047cc91f385964595cc30cbb975.jpg',precoTot : 0, quantiIngresso: 0},
   {id: 3, title : "Assassino por Acaso", price: 18, room : 3, modality:"2D",limity: 20, url:'https://br.web.img3.acsta.net/img/32/07/320706a28fe6a7bb73956803428e23db.jpg',precoTot : 0, quantiIngresso: 0},
   {id:4, title : "Planeta dos Macacos: O Reinado", price: 28, room : 10, modality:"3D XD",limity: 5, url:'https://www.clickriomafra.com.br/emacite/wp-content/uploads/2024/05/Planeta-dos-Macacos-O-Reinado.jpg',precoTot : 0, quantiIngresso: 0},
-  {id: 5, title : "Garfield", price: 15, room : 4, modality:"2D",limity: 20, url:'https://maceioshopping.com/app/uploads/2024/04/d7491303-3758-49d8-b444-4308370f9f30.jpg',precoTot : 0, quantiIngresso: 0}
+  {id: 5, title : "Garfield", price: 15, room : 4, modality:"2D",limity: 20, url:'https://maceioshopping.com/app/uploads/2024/04/d7491303-3758-49d8-b444-4308370f9f30.jpg',precoTot : 0, quantiIngresso: 0},
+  {id: 6, title : "Furiosa: Uma Saga Mad Max", price: 35, room : 10, modality:"3D",limity: 10, url:'https://i0.wp.com/alangeek.com.br/wp-content/uploads/2024/05/img_2045-1.jpg?fit=1332%2C2000&ssl=1',precoTot : 0, quantiIngresso: 0},
+
 ]
 
 Movies.map(({id,title,price,room,modality, limity, url}) => {
@@ -118,8 +122,7 @@ Movies.map(({id,title,price,room,modality, limity, url}) => {
         filmeEscolhido.push(filme);
 
         updateCartIcon();
-
-        renderFilmeEscolhido();
+        updateCart();
       } else {
         alert('Por favor selecione a quantidade de ingressos')
       }
@@ -133,19 +136,15 @@ function updateCartIcon() {
     numberCart.classList.add('number-cart')
     numberCart.textContent = filmeEscolhido.length
     cart.appendChild(numberCart)
+  }else {
+    cart.removeChild(cart.querySelector('.number-cart'))
   }
 }
 
-const filmesCart = document.getElementById('filmes-cart')
-
-cart.addEventListener('click', function() {
-  shoppingCart.classList.toggle('none');
-  shoppingCart.classList.toggle('shopping-cart');
-  
-  // Limpar a lista de filmes do carrinho antes de adicioná-los novamente
+function updateCart(){
   filmesCart.textContent = '';
   
-  filmeEscolhido.map(({title, url, quantiIngresso, precoTot}) => {
+  filmeEscolhido.map(({id,title, url, quantiIngresso, precoTot}) => {
     const boxFilme = document.createElement('div');
     boxFilme.classList.add('box-movie-cart');
 
@@ -168,20 +167,55 @@ cart.addEventListener('click', function() {
     imgCart.src = url
     imgCart.alt = title
 
+    const closeFilme = document.createElement('button')
+    closeFilme.textContent = 'x'
+    closeFilme.classList.add('close-filme')
+
+
+    
+    closeFilme.addEventListener('click', function(){
+      filmeEscolhido.forEach(filme => {
+        if (filme.id === id) {
+          const index = filmeEscolhido.indexOf(filme)
+          console.log(index);
+          filmeEscolhido.splice(index, 1)
+          updateCart() 
+          updateCartIcon()  
+        }
+      })
+    })
+
     boxInfoFilmeCart.appendChild(nameFilme)
     boxInfoFilmeCart.appendChild(qtdeIngressosCart)
     boxInfoFilmeCart.appendChild(precoIngresso)
+    boxImgCart.appendChild(closeFilme)
     boxImgCart.appendChild(imgCart)
     boxFilme.appendChild(boxInfoFilmeCart)
     boxFilme.appendChild(boxImgCart)
     filmesCart.appendChild(boxFilme)
   });
-});
+};
 
 const closeCart = document.getElementById('close-cart')
 closeCart.addEventListener('click', function(){
   shoppingCart.classList.toggle('none')
   shoppingCart.classList.toggle('shopping-cart')
+
+  updateCart();
+  updateCartIcon();
+
+});
+
+
+cart.addEventListener('click', function() {
+  shoppingCart.classList.toggle('none');
+  shoppingCart.classList.toggle('shopping-cart');
+  updateCart();
+  updateCartIcon();
+
+  
+  // Limpar a lista de filmes do carrinho antes de adicioná-los novamente
+  
 })
 
 function renderFilmeEscolhido() {
