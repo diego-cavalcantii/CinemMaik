@@ -4,6 +4,19 @@
   box-sizing: border-box;
 }
 
+/* Scroll minimalista e preto */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #000;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f3f3f3;
+}
+
 body {
   background-color: brown;
 }
@@ -36,6 +49,13 @@ nav {
   padding: 20px 0;
 }
 
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+}
+
 #cart {
   position: relative;
   width: 50px;
@@ -61,14 +81,19 @@ nav {
   max-height: 100vh; /* Garante que a altura máxima seja a altura da janela */
   display: flex;
   flex-direction: column;
+  gap: 50px;
 }
+
+.shopping-cart::-webkit-scrollbar {
+  display: none;
+}
+
 
 
 .close-cart {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
 
   h2 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -77,9 +102,9 @@ nav {
   }
 
   button {
-    padding: 15px 25px;
+    padding: 5px 15px;
     border: unset;
-    border-radius: 15px;
+    border-radius: 5px;
     color: #212121;
     z-index: 1;
     background: #e8e8e8;
@@ -99,7 +124,7 @@ nav {
     left: 0;
     height: 100%;
     width: 0;
-    border-radius: 15px;
+    border-radius: 5px;
     background-color: crimson;
     z-index: -1;
     -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
@@ -125,23 +150,34 @@ nav {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 20px;
 }
 
 #checkout {
   justify-self: end;
-  border: 2px solid forestgreen ;
+  border: none ;
+  background-color: forestgreen;
+  color: #fafafa;
+  width: 100%;
+  margin: 0 auto;
 }
 
-#checkout:hover {
-  background: forestgreen;
-  box-shadow: 0 0 30px 5px forestgreen;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-  cursor: pointer;
-  color: #fafafa;
-}
+#checkout:disabled {
+  pointer-events: none;
+ }
+ 
+ #checkout:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+ }
+ 
+ #checkout:active {
+  box-shadow: none;
+  transform: translateY(0);
+ }
 
 .box-movie-cart {
   display: flex;
@@ -151,13 +187,13 @@ nav {
 
 .box-img-cart {
   position: relative;
-  height: 220px;
+  height: 215px;
   width: 160px;
 }
 
 .img-cart {
   position: absolute;
-  width: 90%;
+  width: 92%;
   height: 200px;
   bottom: 0;
   border-radius: 15px;
@@ -169,6 +205,10 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 5px;
+
+  h2 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
 }
 
 .number-cart {
@@ -191,11 +231,12 @@ nav {
   color: #fafafa;
   text-transform: uppercase;
   font-weight: 900;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #menu {
   display: flex;
-  gap: 10px;
+  gap: 20px;
 }
 
 #menu > a  {
@@ -203,6 +244,7 @@ nav {
   text-transform: uppercase;
   font-weight: 500;
   text-decoration: none;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
 main {
@@ -228,10 +270,11 @@ main {
   flex-direction: column;
   justify-content: start;
   gap: 20px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
   h2 {
-    padding-left: 20px;
+    width: 88%;
+    margin: 0 auto;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #333;
   }
@@ -254,7 +297,8 @@ main {
 
 .box-info {
   display: flex;
-  padding: 0 20px;
+  width: 88%;
+  margin: 0 auto;
   flex-grow: 1;
   align-items: center;
   gap: 30px;
@@ -277,80 +321,48 @@ main {
 }
 
 .comprar {
-  position: relative;
-  margin: 15px;
-  padding: 15px 0;
-  border-radius: 7px;
-  border: 2px solid #ebb000;
-  font-size: 14px;
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 2px;
-  background: transparent;
+  appearance: none;
+  background-color: #ebb000;
+  /* border: 0.125em solid #1A1A1A; */
+  border: none;
+  border-radius: 0.9375em;
+  box-sizing: border-box;
   color: #333;
-  overflow: hidden;
-  box-shadow: 0 0 0 0 transparent;
-  -webkit-transition: all 0.2s ease-in;
-  -moz-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
-}
-
-.comprar:hover {
-  background: #ebb000;
-  box-shadow: 0 0 30px 5px #ebb000;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
   cursor: pointer;
-  color: #fafafa;
-}
-
-.comprar:hover::before {
-  -webkit-animation: sh02 0.5s 0s linear;
-  -moz-animation: sh02 0.5s 0s linear;
-  animation: sh02 0.5s 0s linear;
-}
-
-.comprar::before {
-  content: '';
-  display: block;
-  width: 0px;
-  height: 86%;
-  position: absolute;
-  top: 7%;
-  left: 0%;
-  opacity: 0;
-  background: #fff;
-  box-shadow: 0 0 50px 30px #fff;
-  -webkit-transform: skewX(-20deg);
-  -moz-transform: skewX(-20deg);
-  -ms-transform: skewX(-20deg);
-  -o-transform: skewX(-20deg);
-  transform: skewX(-20deg);
-}
-
-@keyframes sh02 {
-  from {
-    opacity: 0;
-    left: 0%;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-    left: 100%;
-  }
-}
-
-.comprar:active {
-  box-shadow: 0 0 0 0 transparent;
-  -webkit-transition: box-shadow 0.2s ease-in;
-  -moz-transition: box-shadow 0.2s ease-in;
-  transition: box-shadow 0.2s ease-in;
-}
+  display: inline-block;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+  width: 88%;
+  margin: 20px auto 20px auto;
+  padding: 15px 0 ;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+ }
+ 
+ .comprar:disabled {
+  pointer-events: none;
+ }
+ 
+ .comprar:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+ }
+ 
+ .comprar:active {
+  box-shadow: none;
+  transform: translateY(0);
+ }
 
 
 .handle-qtde {
@@ -435,43 +447,26 @@ main {
   position: absolute;
   top: 0;
   right: 0;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border: unset;
-  border-radius: 13px;
+  border-radius: 100px;
   color: #212121;
-  background: #e8e8e8;
+  background: crimson;
+  color:#f3f3f3;
   font-weight: 1000;
-  font-size: 17px;
+  text-transform: uppercase;
+  font-size: 14px;
   -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
   box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
   transition: all 250ms;
-  overflow: hidden;
   z-index: 101;
  }
  
- .close-filme::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  border-radius: 15px;
-  background-color: crimson;
-  z-index: -1;
-  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-  transition: all 250ms
- }
  
  .close-filme:hover {
-  color: #e8e8e8;
   cursor: pointer;
- }
- 
- .close-filme:hover::before {
-  width: 100%;
+  background-color: rgb(168, 0, 34);
  }
 
 .none {

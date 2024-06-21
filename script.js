@@ -14,6 +14,7 @@ const containerFilmeEscolhido = document.getElementById('container-filme-escolhi
 const containerImagemFilmeEscolhido = document.getElementById('imagem-filme-escolhido');
 const cart = document.getElementById('cart')
 const filmesCart = document.getElementById('filmes-cart')
+const checkout = document.getElementById('checkout')
 
 let filmeEscolhido = [];
 
@@ -131,7 +132,7 @@ Movies.map(({id,title,price,room,modality, limity, url}) => {
 });
 
 function updateCartIcon() {
-  if(filmeEscolhido.length > 0){
+  if(filmeEscolhido.length){
     const numberCart = document.createElement('span')
     numberCart.classList.add('number-cart')
     numberCart.textContent = filmeEscolhido.length
@@ -216,6 +217,24 @@ cart.addEventListener('click', function() {
   
   // Limpar a lista de filmes do carrinho antes de adicioná-los novamente
   
+})
+
+checkout.addEventListener('click',function(){
+  if(filmeEscolhido.length > 0 ){
+    filmeEscolhido.forEach(filme => {
+      console.log(filme.title);
+      console.log(filme.quantiIngresso);
+      console.log(filme.precoTot);
+
+    })
+  }
+  alert("Compra Concluida")
+  while(filmeEscolhido.length){
+    filmeEscolhido.pop()
+  }
+
+  updateCart();
+  updateCartIcon();
 })
 
 function renderFilmeEscolhido() {
