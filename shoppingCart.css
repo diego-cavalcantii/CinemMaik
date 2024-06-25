@@ -1,0 +1,201 @@
+.shopping-cart {
+  position: fixed;
+  width: 30%;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  background-color: #fafafa;
+  padding: 20px;
+  z-index: 100;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow-y: auto; /* Adiciona a barra de rolagem vertical */
+  height: 100vh;
+  max-height: 100vh; /* Garante que a altura máxima seja a altura da janela */
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+
+
+.shopping-cart::-webkit-scrollbar {
+  display: none;
+}
+
+.close-cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 26px;
+    text-transform: uppercase;
+  }
+
+  button {
+    padding: 5px 15px;
+    border: unset;
+    border-radius: 5px;
+    color: #212121;
+    z-index: 1;
+    background: #e8e8e8;
+    position: relative;
+    font-weight: 1000;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+    overflow: hidden;
+   }
+   
+   button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 5px;
+    background-color: crimson;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms
+   }
+   
+   button:hover {
+    color: #e8e8e8;
+    cursor: pointer;
+   }
+   
+   button:hover::before {
+    width: 100%;
+   }
+}
+
+@media(min-width:375px){
+  .shopping-cart {
+    width: 100%;
+    padding: 20px 30px;
+  }
+  .close-cart {
+    h2 {
+      font-size: 30px;
+    }
+    button {
+      padding: 10px 30px;
+      font-size: 20px;
+
+    }
+  }
+
+}
+
+#filmes-cart {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.box-movie-cart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.box-img-cart {
+  position: relative;
+  height: 215px;
+  width: 160px;
+}
+
+.img-cart {
+  position: absolute;
+  width: 92%;
+  height: 200px;
+  bottom: 0;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.box-info-filme-cart {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  h2 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+}
+
+.number-cart {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #ebb000;
+  color: #333;
+  border-radius: 100%;
+  width: 20px;
+  height: 20px;
+  font-size: 16px;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-filme {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  border: unset;
+  border-radius: 100px;
+  color: #212121;
+  background: crimson;
+  color:#f3f3f3;
+  font-weight: 1000;
+  text-transform: uppercase;
+  font-size: 14px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  z-index: 101;
+ }
+ 
+ 
+ .close-filme:hover {
+  cursor: pointer;
+  background-color: rgb(168, 0, 34);
+ }
+
+ .button-checkout {
+  justify-self: end;
+  border: none ;
+  background-color: forestgreen;
+  color: #fafafa;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.button-checkout:disabled {
+  pointer-events: none;
+ }
+ 
+ .button-checkout:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+ }
+ 
+ .button-checkout:active {
+  box-shadow: none;
+  transform: translateY(0);
+ }
