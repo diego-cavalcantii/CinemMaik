@@ -28,7 +28,6 @@
   align-items: center;
 
   h2 {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 26px;
     text-transform: uppercase;
   }
@@ -74,23 +73,7 @@
    }
 }
 
-@media(min-width:375px){
-  .shopping-cart {
-    width: 100%;
-    padding: 20px 30px;
-  }
-  .close-cart {
-    h2 {
-      font-size: 30px;
-    }
-    button {
-      padding: 10px 30px;
-      font-size: 20px;
 
-    }
-  }
-
-}
 
 #filmes-cart {
   width: 100%;
@@ -199,3 +182,24 @@
   box-shadow: none;
   transform: translateY(0);
  }
+
+ @media(min-width:375px){
+  .shopping-cart {
+    width: 100%;
+    padding: 20px 30px;
+  }
+  .close-cart {
+    h2 {
+      font-size: 30px;
+    }
+    button {
+      padding: 10px 30px;
+      font-size: 20px;
+    }
+  }
+  /* .box-movie-cart {
+    flex-direction: column;
+    gap: 10px;
+  } */
+
+}

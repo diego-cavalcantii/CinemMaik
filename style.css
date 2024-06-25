@@ -19,10 +19,11 @@
 
 body {
   background-color: brown;
+  font-family: "Ubuntu", sans-serif;
 }
 
-h1 {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+h1,h2 {
+  font-family: "Noto Sans", sans-serif;
 }
 
 li {
@@ -68,9 +69,9 @@ nav {
 
 .logo {
   color: #fafafa;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: 900;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Noto Sans", sans-serif;
   cursor: pointer;
   text-decoration: none;
   font-size: 30px;
@@ -117,7 +118,7 @@ main {
   h2 {
     width: 88%;
     margin: 0 auto;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Noto Sans", sans-serif;
     color: #333;
   }
 
@@ -225,6 +226,27 @@ main {
 
 .none {
   display: none;
+}
+
+@media(min-width:375px){
+  .handle-qtde {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+  .box-filme {
+    width: 375px;
+  }
+  .img-filme {
+    height: 350px;
+  }
+  .img-filme > img {
+    height: 350px;
+  }
 }
 
 
